@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000/realms/my-realm
+          jwk-set-uri: http://localhost:9000/realms/my-realm/protocol/openid-connect/certs
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/myapp
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
